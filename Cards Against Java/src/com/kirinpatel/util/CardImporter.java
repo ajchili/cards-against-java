@@ -5,13 +5,17 @@
  */
 package com.kirinpatel.util;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
+ * This class will import cards from .dat files inside of the res folder.
+ * Currently there is no support for custom cards.
  *
  * @author Kirin Patel
- * @version 1.0
+ * @version 1.1
  */
 public class CardImporter {
     
@@ -30,9 +34,9 @@ public class CardImporter {
      * @param cardType Type of card
      * @return Returns card for specified game and card type
      */
-    public static ArrayList<String> importCards(int gameType, int cardType) {
+    public static ArrayList<String> importCards(int gameType, int cardType) throws FileNotFoundException {
         ArrayList<String> cards = new ArrayList<>();
-        Scanner s = new Scanner("./res/" + GAME_TYPE[gameType] + "/" + CARD_TYPE[cardType] + ".dat");
+        Scanner s = new Scanner(new File("./res/" + GAME_TYPE[gameType] + "/" + CARD_TYPE[cardType] + ".dat"));
         
         while(s.hasNext()) {
             cards.add(s.nextLine());

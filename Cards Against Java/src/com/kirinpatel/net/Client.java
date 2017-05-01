@@ -3,18 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.kirinpatel;
+package com.kirinpatel.net;
+
+import java.awt.*;
+import javax.swing.*;
 
 /**
  *
  * @author Kirin Patel
  * @version 0.1
  */
-public class Main {
+public class Client extends JFrame {
     
-    public static boolean closeGame = false;
-    
-    public static void main(String[] args) {
-        
+    public Client() {
+        super("Cards Against Java");
     }
 }
