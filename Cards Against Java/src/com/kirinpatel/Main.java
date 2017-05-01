@@ -5,6 +5,10 @@
  */
 package com.kirinpatel;
 
+import com.kirinpatel.util.CardImporter;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+
 /**
  *
  * @author Kirin Patel
@@ -14,7 +18,11 @@ public class Main {
     
     public static boolean closeGame = false;
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
+        ArrayList<String> cards = CardImporter.importCards(1, 2);
         
+        for (String card : cards) {
+            System.out.println(card);
+        }
     }
 }
