@@ -13,7 +13,7 @@ import java.awt.event.ComponentListener;
  * This method will handle component events for GUI parts of the game.
  *
  * @author Kirin Patel
- * @version 0.1
+ * @version 1.0
  */
 public class CloseListener implements ComponentListener {
     

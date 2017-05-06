@@ -12,7 +12,7 @@ import java.util.ArrayList;
 /**
  *
  * @author Kirin Patel
- * @version 0.1
+ * @version 0.2
  */
 public class Main {
     
@@ -21,8 +21,8 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         ArrayList<String> cards = CardImporter.importCards(1, 2);
         
-        for (String card : cards) {
+        cards.forEach((card) -> {
             System.out.println(card);
-        }
+        });
     }
 }
