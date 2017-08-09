@@ -1,4 +1,4 @@
-package main.caj.util;
+package java.com.kirinpatel.caj.util;
 
 import java.util.ArrayList;
 

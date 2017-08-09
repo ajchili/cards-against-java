@@ -1,8 +1,8 @@
-package main.caj;
+package java.com.kirinpatel.caj;
 
 import com.sun.media.jfxmedia.logging.Logger;
-import main.caj.net.Client;
-import main.caj.net.Server;
+import java.com.kirinpatel.caj.net.Client;
+import java.com.kirinpatel.caj.net.Server;
 
 public class CAJ {
 
