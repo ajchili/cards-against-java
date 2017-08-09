@@ -21,22 +21,36 @@ public class CardImporter {
                 Logger.logMsg(Logger.INFO, "Loading \"" + deckName + "\" deck...");
                 File fillerCards = new File("cards/" + f + "/filler.txt");
                 File phraseCards = new File("cards/" + f + "/phrase.txt");
-                if (fillerCards.exists() && phraseCards.exists()) {
-                    Deck deck = new Deck(deckName);
+                Deck deck = new Deck(deckName);
+                if (fillerCards.exists()) {
                     Logger.logMsg(Logger.INFO, "Loading filler cards for deck \"" + deckName + "\"...");
                     deck.addFillerCards(readCards(fillerCards, deckName, Card.CARD_TYPE.FILLER));
+                    Logger.logMsg(Logger.INFO, "Loaded deck \"" + deckName + "\".");
+                } else {
+                    Logger.logMsg(Logger.ERROR, "Missing filler card set for deck \"" + deckName + "\".");
+                }
+                if (phraseCards.exists()) {
                     Logger.logMsg(Logger.INFO, "Loading phrase cards for deck \"" + deckName + "\"...");
                     deck.addPhraseCards(readCards(phraseCards, deckName, Card.CARD_TYPE.PHRASE));
-                    Logger.logMsg(Logger.INFO, "Loaded deck \"" + deckName + "\".");
-                    decks.add(deck);
                 } else {
-                    Logger.logMsg(Logger.ERROR, "Missing card set for deck \"" + deckName + "\".");
+                    Logger.logMsg(Logger.ERROR, "Missing filler card set for deck \"" + deckName + "\".");
                 }
+                decks.add(deck);
+                Logger.logMsg(Logger.INFO, "Loaded deck \"" + deckName + "\".");
             }
         } else {
             Logger.logMsg(Logger.ERROR, "Unable to find decks.");
         }
-        Logger.logMsg(Logger.INFO, "Loaded " +decks.size() + " decks.");
+        Logger.logMsg(Logger.INFO, "Loaded decks.");
+        int fillerCards = 0;
+        int phraseCards = 0;
+        for (Deck deck : decks) {
+            fillerCards += deck.getFillerCards().size();
+            phraseCards += deck.getPhraseCards().size();
+        }
+        Logger.logMsg(Logger.INFO, fillerCards + " filler cards and "
+                + phraseCards  + " phrase cards found in "
+                + decks.size() + " decks.");
         Logger.logMsg(Logger.INFO, "Cards loaded.");
         return decks;
     }

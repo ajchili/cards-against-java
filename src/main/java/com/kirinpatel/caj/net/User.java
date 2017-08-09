@@ -9,6 +9,7 @@ public class User implements Serializable {
 
     private final String name;
     private ArrayList<Card> hand = new ArrayList<>();
+    private int pointCount = 0;
 
     public User() {
         name = System.getProperty("user/name");
@@ -20,11 +21,21 @@ public class User implements Serializable {
         }
     }
 
+    public void addPoint() {
+        if (pointCount > 5) {
+            pointCount++;
+        }
+    }
+
     public String getName() {
         return name;
     }
 
     public ArrayList<Card> getHand() {
         return hand;
+    }
+
+    public int getPointCount() {
+        return pointCount;
     }
 }

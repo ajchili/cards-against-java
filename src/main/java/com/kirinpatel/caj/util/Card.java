@@ -6,6 +6,7 @@ public class Card implements Serializable {
 
     private final CARD_TYPE type;
     private final String text;
+    private int blankSpaces = 0;
 
     public enum CARD_TYPE {
         FILLER(0),
@@ -25,7 +26,11 @@ public class Card implements Serializable {
 
     public Card(CARD_TYPE type, String text) {
         this.type = type;
-        this.text = text.replace("BLANK", "________");
+        while (text.contains("BLANK")) {
+            blankSpaces++;
+            text = text.replace("BLANK", "________");
+        }
+        this.text = text;
     }
 
     public CARD_TYPE getType() {
