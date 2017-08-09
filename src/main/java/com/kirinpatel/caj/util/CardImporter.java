@@ -5,6 +5,8 @@ import com.sun.media.jfxmedia.logging.Logger;
 import java.io.*;
 import java.util.ArrayList;
 
+import static main.java.com.kirinpatel.caj.util.Card.CARD_TYPE.BLANK;
+
 public class CardImporter {
 
     public static ArrayList<Deck> importCards() {
@@ -46,7 +48,11 @@ public class CardImporter {
 
             String card;
             while((card = reader.readLine()) != null) {
-                cards.add(new Card(type, card));
+                if (card.isEmpty()) {
+                    cards.add(new Card(BLANK, card));
+                } else {
+                    cards.add(new Card(type, card));
+                }
             }
             if (type == Card.CARD_TYPE.FILLER) {
                 Logger.logMsg(Logger.INFO, "Loaded " + cards.size() + " filler cards for \"" + deckName + "\".");

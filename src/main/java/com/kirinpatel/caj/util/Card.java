@@ -9,7 +9,8 @@ public class Card implements Serializable {
 
     public enum CARD_TYPE {
         FILLER(0),
-        PHRASE(1);
+        PHRASE(1),
+        BLANK(2);
 
         private int cardType;
 
