@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Card implements Serializable {
 
+    private static final String[] BLANK_SPACE = { "BLANK", "________"};
     private final CARD_TYPE type;
     private final String text;
     private int blankSpaces = 0;
@@ -26,9 +27,9 @@ public class Card implements Serializable {
 
     public Card(CARD_TYPE type, String text) {
         this.type = type;
-        while (text.contains("BLANK")) {
+        while (text.contains(BLANK_SPACE[0])) {
             blankSpaces++;
-            text = text.replace("BLANK", "________");
+            text = text.replaceFirst(BLANK_SPACE[0], BLANK_SPACE[1]);
         }
         this.text = text;
     }
