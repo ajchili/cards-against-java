@@ -1,4 +1,4 @@
-package java.com.kirinpatel.caj.util;
+package main.java.com.kirinpatel.caj.util;
 
 import com.sun.media.jfxmedia.logging.Logger;
 

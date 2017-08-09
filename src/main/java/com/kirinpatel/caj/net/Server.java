@@ -1,7 +1,7 @@
-package java.com.kirinpatel.caj.net;
+package main.java.com.kirinpatel.caj.net;
 
-import java.com.kirinpatel.caj.util.CardImporter;
-import java.com.kirinpatel.caj.util.Deck;
+import main.java.com.kirinpatel.caj.util.CardImporter;
+import main.java.com.kirinpatel.caj.util.Deck;
 
 import java.util.ArrayList;
 
