@@ -5,11 +5,16 @@ import java.util.ArrayList;
 public class Deck {
 
     private final String name;
+    private boolean enabled = true;
     private ArrayList<Card> fillerCards = new ArrayList<>();
     private ArrayList<Card> phraseCards = new ArrayList<>();
 
     Deck(String name) {
         this.name = name;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     private void addFillerCard(Card card) {
@@ -38,6 +43,10 @@ public class Deck {
 
     public String getName() {
         return name;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
     }
 
     public ArrayList<Card> getFillerCards() {

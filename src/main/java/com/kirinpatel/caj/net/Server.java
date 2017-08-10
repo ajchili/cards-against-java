@@ -39,6 +39,10 @@ public class Server extends Network {
         serverThread.stop();
     }
 
+    public ArrayList<Deck> getDecks() {
+        return DECKS;
+    }
+
     class ServerThread implements Runnable {
 
         private ExecutorService executorService;
@@ -62,6 +66,14 @@ public class Server extends Network {
                     executorService.execute(new CommunicationThread(socket));
                 } catch (IOException e) {
                     // Ignore as it is almost always thrown when server is shutting down
+                }
+            }
+            executorService.shutdown();
+            while (!executorService.isTerminated()) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
                 }
             }
             Logger.logMsg(Logger.INFO, "Closed server.");
