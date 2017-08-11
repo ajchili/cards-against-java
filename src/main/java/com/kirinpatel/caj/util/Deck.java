@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Deck {
 
     private final String name;
-    private boolean enabled = true;
+    private boolean enabled = false;
     private ArrayList<Card> fillerCards = new ArrayList<>();
     private ArrayList<Card> phraseCards = new ArrayList<>();
 

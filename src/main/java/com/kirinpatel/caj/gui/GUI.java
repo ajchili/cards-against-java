@@ -46,8 +46,8 @@ public class GUI extends JFrame {
                     deck.isEnabled());
             deckBox.addActionListener(e -> {
                 deck.setEnabled(!deck.isEnabled());
-                Logger.logMsg(Logger.INFO, deck.getName()
-                        + " was " + (deck.isEnabled() ? "enabled." : "disabled."));
+                Logger.logMsg(Logger.INFO, "\"" + deck.getName()
+                        + "\" was " + (deck.isEnabled() ? "enabled." : "disabled."));
             });
             decksPanel.add(deckBox);
         }

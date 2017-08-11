@@ -8,11 +8,13 @@ public class Card implements Serializable {
     private final CARD_TYPE type;
     private final String text;
     private int blankSpaces = 0;
+    private boolean isBlank = false;
 
     public enum CARD_TYPE {
         FILLER(0),
         PHRASE(1),
-        BLANK(2);
+        BLANK_FILLER(2),
+        BLANK_PHRASE(3);
 
         private int cardType;
 
@@ -31,7 +33,16 @@ public class Card implements Serializable {
             blankSpaces++;
             text = text.replaceFirst(BLANK_SPACE[0], BLANK_SPACE[1]);
         }
+        if (text.contains("SPECIAL")) {
+            text = text.replace("SPECIAL", "");
+            blankSpaces = Integer.parseInt(text.substring(text.length() - 1));
+            text = text.substring(0, text.length() - 1);
+        }
+        if (type == CARD_TYPE.BLANK_PHRASE) {
+            blankSpaces = 1;
+        }
         this.text = text;
+        this.isBlank = (type == CARD_TYPE.BLANK_FILLER || type == CARD_TYPE.BLANK_PHRASE);
     }
 
     public CARD_TYPE getType() {
@@ -40,5 +51,9 @@ public class Card implements Serializable {
 
     public String getText() {
         return text;
+    }
+
+    public boolean isBlank() {
+        return isBlank;
     }
 }
